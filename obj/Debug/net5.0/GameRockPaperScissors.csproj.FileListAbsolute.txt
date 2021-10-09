@@ -1,0 +1,16 @@
+D:\OneDrive\Code\C#\MyProjects\GameRockPaperScissors\bin\Debug\net5.0\GameRockPaperScissors.exe
+D:\OneDrive\Code\C#\MyProjects\GameRockPaperScissors\bin\Debug\net5.0\GameRockPaperScissors.deps.json
+D:\OneDrive\Code\C#\MyProjects\GameRockPaperScissors\bin\Debug\net5.0\GameRockPaperScissors.runtimeconfig.json
+D:\OneDrive\Code\C#\MyProjects\GameRockPaperScissors\bin\Debug\net5.0\GameRockPaperScissors.runtimeconfig.dev.json
+D:\OneDrive\Code\C#\MyProjects\GameRockPaperScissors\bin\Debug\net5.0\GameRockPaperScissors.dll
+D:\OneDrive\Code\C#\MyProjects\GameRockPaperScissors\bin\Debug\net5.0\ref\GameRockPaperScissors.dll
+D:\OneDrive\Code\C#\MyProjects\GameRockPaperScissors\bin\Debug\net5.0\GameRockPaperScissors.pdb
+D:\OneDrive\Code\C#\MyProjects\GameRockPaperScissors\obj\Debug\net5.0\GameRockPaperScissors.GeneratedMSBuildEditorConfig.editorconfig
+D:\OneDrive\Code\C#\MyProjects\GameRockPaperScissors\obj\Debug\net5.0\GameRockPaperScissors.AssemblyInfoInputs.cache
+D:\OneDrive\Code\C#\MyProjects\GameRockPaperScissors\obj\Debug\net5.0\GameRockPaperScissors.AssemblyInfo.cs
+D:\OneDrive\Code\C#\MyProjects\GameRockPaperScissors\obj\Debug\net5.0\GameRockPaperScissors.csproj.CoreCompileInputs.cache
+D:\OneDrive\Code\C#\MyProjects\GameRockPaperScissors\obj\Debug\net5.0\GameRockPaperScissors.dll
+D:\OneDrive\Code\C#\MyProjects\GameRockPaperScissors\obj\Debug\net5.0\ref\GameRockPaperScissors.dll
+D:\OneDrive\Code\C#\MyProjects\GameRockPaperScissors\obj\Debug\net5.0\GameRockPaperScissors.pdb
+D:\OneDrive\Code\C#\MyProjects\GameRockPaperScissors\obj\Debug\net5.0\GameRockPaperScissors.genruntimeconfig.cache
+D:\OneDrive\Code\C#\MyProjects\GameRockPaperScissors\obj\Debug\net5.0\GameRockPaperScissors.csproj.AssemblyReference.cache
