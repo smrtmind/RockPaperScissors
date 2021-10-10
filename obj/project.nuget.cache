@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mj4vn9Ps1duGSFiwYdzr+Zswqbtu9fxxgbTmFct/qsg+QqS54cDuzdsBPMN9RxAiTENzkNb/bAJOc7+VJ161mQ==",
+  "dgSpecHash": "PK0H7fHWME++x9kWcBR72X5esIOVnnQxVtjpXA6j/ZM4VZJhkm1r1Au5Lhg9h6k7qadlowK9vXYrkv0Ph4R26w==",
   "success": true,
-  "projectFilePath": "D:\\OneDrive\\Code\\C#\\MyProjects\\GameRockPaperScissors\\GameRockPaperScissors.csproj",
+  "projectFilePath": "D:\\codeBase\\c#\\GameRockPaperScissors\\GameRockPaperScissors.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

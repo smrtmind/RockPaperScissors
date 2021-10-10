@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\OneDrive\\Code\\C#\\MyProjects\\GameRockPaperScissors\\GameRockPaperScissors.csproj",
+      "projectUniqueName": "D:\\codeBase\\c#\\GameRockPaperScissors\\GameRockPaperScissors.csproj",
       "projectName": "GameRockPaperScissors",
-      "projectPath": "D:\\OneDrive\\Code\\C#\\MyProjects\\GameRockPaperScissors\\GameRockPaperScissors.csproj",
+      "projectPath": "D:\\codeBase\\c#\\GameRockPaperScissors\\GameRockPaperScissors.csproj",
       "packagesPath": "C:\\Users\\Oleg\\.nuget\\packages\\",
-      "outputPath": "D:\\OneDrive\\Code\\C#\\MyProjects\\GameRockPaperScissors\\obj\\",
+      "outputPath": "D:\\codeBase\\c#\\GameRockPaperScissors\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
