@@ -6,12 +6,13 @@ namespace GameRockPaperScissors
 {
     class Program
     {
-        public static Random random = new Random();
+        private static Random random = new Random();
+        private static string playerName = string.Empty;
+        private static string opponentName = string.Empty;
+        private static int[] statistics;
         static void Main(string[] args)
         {
             string input = string.Empty;
-            string playerName = string.Empty;
-            string exitTheGame = string.Empty;
 
             Print($"Rock Paper Scissors\n\n", ConsoleColor.DarkYellow);
             Print("Enter your name or press ENTER: ");
@@ -24,14 +25,17 @@ namespace GameRockPaperScissors
                 playerName = input;
             else playerName = "Player";
 
-            while (exitTheGame.ToLower() != "n")
+            input = string.Empty;
+            while (input.ToLower() != "n")
             {
-                int[] statistics = new int[4];
-                string[] names = File.ReadAllLines(@"D:\codeBase\c#\GameRockPaperScissors\libraryOfWords.txt");
-                string opponentName = names[random.Next(0, names.Length - 1)].Trim();
+                statistics = new int[4];
+                //using .txt file with library of different names
+                string[] names = File.ReadAllLines(@"D:\GameRockPaperScissors\libraryOfWords.txt");
+                //randomly choose name for opponent
+                opponentName = names[random.Next(0, names.Length - 1)].Trim();
 
-                string keyboardInput = string.Empty;
-                while (keyboardInput != "<")
+                input = string.Empty;
+                while (input != "<")
                 {
                     Console.Clear();
 
@@ -40,107 +44,107 @@ namespace GameRockPaperScissors
                     Print("\nmake your choice: ");
 
                     Console.ForegroundColor = ConsoleColor.Green;
-                    keyboardInput = Console.ReadLine();
+                    input = Console.ReadLine();
                     Console.ResetColor();
 
                     int enemyChoice = random.Next(1, 4);
 
-                    switch (keyboardInput)
+                    switch (input)
                     {
                         case "1":
-                            if (keyboardInput == "1" && enemyChoice == 1)
+                            if (input == "1" && enemyChoice == 1)
                             {
                                 statistics[0]++;
                                 statistics[3]++;
 
                                 Print($"\n{playerName}: rock VS {opponentName}: rock\n\n");
-                                GetStatistics(playerName, opponentName, statistics);
+                                ShowStatistics();
                                 break;
                             }
 
-                            else if (keyboardInput == "1" && enemyChoice == 2)
+                            else if (input == "1" && enemyChoice == 2)
                             {
                                 statistics[1]++;
                                 statistics[3]++;
 
                                 Print($"\n{playerName}: rock VS {opponentName}: scissors\n\n");
-                                GetStatistics(playerName, opponentName, statistics);
+                                ShowStatistics();
                                 break;
                             }
 
-                            else if (keyboardInput == "1" && enemyChoice == 3)
+                            else if (input == "1" && enemyChoice == 3)
                             {
                                 statistics[2]++;
                                 statistics[3]++;
 
                                 Print($"\n{playerName}: rock VS {opponentName}: paper\n\n");
-                                GetStatistics(playerName, opponentName, statistics);
+                                ShowStatistics();
                                 break;
                             }
 
                             continue;
 
                         case "2":
-                            if (keyboardInput == "2" && enemyChoice == 1)
+                            if (input == "2" && enemyChoice == 1)
                             {
                                 statistics[2]++;
                                 statistics[3]++;
 
                                 Print($"\n{playerName}: scissors VS {opponentName}: rock\n\n");
-                                GetStatistics(playerName, opponentName, statistics);
+                                ShowStatistics();
                                 break;
                             }
 
-                            else if (keyboardInput == "2" && enemyChoice == 2)
+                            else if (input == "2" && enemyChoice == 2)
                             {
                                 statistics[0]++;
                                 statistics[3]++;
 
                                 Print($"\n{playerName}: scissors VS {opponentName}: scissors\n\n");
-                                GetStatistics(playerName, opponentName, statistics);
+                                ShowStatistics();
                                 break;
                             }
 
-                            else if (keyboardInput == "2" && enemyChoice == 3)
+                            else if (input == "2" && enemyChoice == 3)
                             {
                                 statistics[1]++;
                                 statistics[3]++;
 
                                 Print($"\n{playerName}: scissors VS {opponentName}: paper\n\n");
-                                GetStatistics(playerName, opponentName, statistics);
+                                ShowStatistics();
                                 break;
                             }
 
                             continue;
 
                         case "3":
-                            if (keyboardInput == "3" && enemyChoice == 1)
+                            if (input == "3" && enemyChoice == 1)
                             {
                                 statistics[1]++;
                                 statistics[3]++;
 
                                 Print($"\n{playerName}: paper VS {opponentName}: rock\n\n");
-                                GetStatistics(playerName, opponentName, statistics);
+                                ShowStatistics();
                                 break;
                             }
 
-                            else if (keyboardInput == "3" && enemyChoice == 2)
+                            else if (input == "3" && enemyChoice == 2)
                             {
                                 statistics[2]++;
                                 statistics[3]++;
 
                                 Print($"\n{playerName}: paper VS {opponentName}: scissors\n\n");
-                                GetStatistics(playerName, opponentName, statistics);
+                                ShowStatistics();
                                 break;
                             }
 
-                            else if (keyboardInput == "3" && enemyChoice == 3)
+                            else if (input == "3" && enemyChoice == 3)
                             {
                                 statistics[0]++;
                                 statistics[3]++;
 
                                 Print($"\n{playerName}: paper VS {opponentName}: paper\n\n");
-                                GetStatistics(playerName, opponentName, statistics);
+                                ShowStatistics();
                                 break;
                             }
 
@@ -165,11 +169,11 @@ namespace GameRockPaperScissors
                             break;
                     }
 
-                    if (keyboardInput == "<") break;
+                    if (input == "<") break;
                 }
 
-                exitTheGame = string.Empty;
-                while (exitTheGame.ToLower() != "y" && exitTheGame.ToLower() != "n")
+                input = string.Empty;
+                while (input.ToLower() != "y" && input.ToLower() != "n")
                 {
                     Print("Do you want to play again?");
                     Print(" [y] ", ConsoleColor.Green);
@@ -178,12 +182,12 @@ namespace GameRockPaperScissors
                     Print(": ");
 
                     Console.ForegroundColor = ConsoleColor.Green;
-                    exitTheGame = Console.ReadLine();
+                    input = Console.ReadLine();
                     Console.ResetColor();
                 }
             }
         }
-        internal static void GetStatistics(string playerName, string opponentName, int[] statistics)
+        internal static void ShowStatistics()
         {
             Print("Statistics\n");
             Print($"{playerName}: {statistics[1]}\n", ConsoleColor.DarkGreen);
