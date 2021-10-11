@@ -7,9 +7,10 @@ namespace GameRockPaperScissors
     class Program
     {
         private static Random random = new Random();
-        private static string playerName = string.Empty;
-        private static string opponentName = string.Empty;
-        private static int[] statistics;
+        private static Player player1;
+        private static Player player2;
+        private static int draw;
+        private static int matchesPlayed;
         static void Main(string[] args)
         {
             string input = string.Empty;
@@ -22,17 +23,17 @@ namespace GameRockPaperScissors
             Console.ResetColor();
 
             if (input.Length > 0)
-                playerName = input;
-            else playerName = "Player";
+                player1 = new Player(input);
+            else player1 = new Player("Player");
 
             input = string.Empty;
             while (input.ToLower() != "n")
             {
-                statistics = new int[4];
                 //using .txt file with library of different names
-                string[] names = File.ReadAllLines(@"D:\GameRockPaperScissors\libraryOfWords.txt");
+                string[] names = File.ReadAllLines(@"D:\codeBase\c#\GameRockPaperScissors\libraryOfWords.txt");
+                //string[] names = File.ReadAllLines(@"D:\GameRockPaperScissors\libraryOfWords.txt");
                 //randomly choose name for opponent
-                opponentName = names[random.Next(0, names.Length - 1)].Trim();
+                player2 = new Player(names[random.Next(0, names.Length - 1)].Trim());
 
                 input = string.Empty;
                 while (input != "<")
@@ -47,129 +48,47 @@ namespace GameRockPaperScissors
                     input = Console.ReadLine();
                     Console.ResetColor();
 
-                    int enemyChoice = random.Next(1, 4);
+                    int playerTurn = random.Next(1, 4);
 
                     switch (input)
                     {
                         case "1":
-                            if (input == "1" && enemyChoice == 1)
-                            {
-                                statistics[0]++;
-                                statistics[3]++;
-
-                                Print($"\n{playerName}: rock VS {opponentName}: rock\n\n");
-                                ShowStatistics();
-                                break;
-                            }
-
-                            else if (input == "1" && enemyChoice == 2)
-                            {
-                                statistics[1]++;
-                                statistics[3]++;
-
-                                Print($"\n{playerName}: rock VS {opponentName}: scissors\n\n");
-                                ShowStatistics();
-                                break;
-                            }
-
-                            else if (input == "1" && enemyChoice == 3)
-                            {
-                                statistics[2]++;
-                                statistics[3]++;
-
-                                Print($"\n{playerName}: rock VS {opponentName}: paper\n\n");
-                                ShowStatistics();
-                                break;
-                            }
-
+                            player1.NextTurn(playerChoice.rock);
+                            PlayerTurn(playerTurn);
                             continue;
 
                         case "2":
-                            if (input == "2" && enemyChoice == 1)
-                            {
-                                statistics[2]++;
-                                statistics[3]++;
-
-                                Print($"\n{playerName}: scissors VS {opponentName}: rock\n\n");
-                                ShowStatistics();
-                                break;
-                            }
-
-                            else if (input == "2" && enemyChoice == 2)
-                            {
-                                statistics[0]++;
-                                statistics[3]++;
-
-                                Print($"\n{playerName}: scissors VS {opponentName}: scissors\n\n");
-                                ShowStatistics();
-                                break;
-                            }
-
-                            else if (input == "2" && enemyChoice == 3)
-                            {
-                                statistics[1]++;
-                                statistics[3]++;
-
-                                Print($"\n{playerName}: scissors VS {opponentName}: paper\n\n");
-                                ShowStatistics();
-                                break;
-                            }
-
+                            player1.NextTurn(playerChoice.scissors);
+                            PlayerTurn(playerTurn);
                             continue;
 
                         case "3":
-                            if (input == "3" && enemyChoice == 1)
-                            {
-                                statistics[1]++;
-                                statistics[3]++;
-
-                                Print($"\n{playerName}: paper VS {opponentName}: rock\n\n");
-                                ShowStatistics();
-                                break;
-                            }
-
-                            else if (input == "3" && enemyChoice == 2)
-                            {
-                                statistics[2]++;
-                                statistics[3]++;
-
-                                Print($"\n{playerName}: paper VS {opponentName}: scissors\n\n");
-                                ShowStatistics();
-                                break;
-                            }
-
-                            else if (input == "3" && enemyChoice == 3)
-                            {
-                                statistics[0]++;
-                                statistics[3]++;
-
-                                Print($"\n{playerName}: paper VS {opponentName}: paper\n\n");
-                                ShowStatistics();
-                                break;
-                            }
-
+                            player1.NextTurn(playerChoice.paper);
+                            PlayerTurn(playerTurn);
                             continue;
 
                         case "<":
-                            Console.Clear();
-
-                            Print("Final statistics\n");
-                            Print($"{playerName}: {statistics[1]}\n", ConsoleColor.DarkGreen);
-                            Print($"{opponentName}: {statistics[2]}\n", ConsoleColor.DarkRed);
-                            Print($"Draw: {statistics[0]}\n", ConsoleColor.Cyan);
-                            Print($"Total games played: {statistics[3]}\n", ConsoleColor.DarkYellow);
-
-                            if 
-                                (statistics[1] > statistics[2]) Console.WriteLine($"\nYou won, congradulations!\n");
-                            else if (statistics[1] < statistics[2]) 
-                                Print($"\n{opponentName} won.\nMaybe next time luck will be on your side\n\n");
-                            else 
-                                Print($"\nFriendly draw\n\n");
-
                             break;
                     }
 
-                    if (input == "<") break;
+                    if (input == "<")
+                    {
+                        Console.Clear();
+
+                        Print("Final statistics\n");
+                        Print($"{player1.Name}: {player1.Wins}\n", ConsoleColor.DarkGreen);
+                        Print($"{player2.Name}: {player2.Wins}\n", ConsoleColor.DarkRed);
+                        Print($"Draw: {draw}\n", ConsoleColor.Cyan);
+                        Print($"Total games played: {matchesPlayed}\n", ConsoleColor.DarkYellow);
+
+                        if
+                            (player1.Wins > player2.Wins) Console.WriteLine($"\nYou won, congradulations!\n");
+                        else if (player1.Wins < player2.Wins)
+                            Print($"\n{player2.Name} won.\nMaybe next time luck will be on your side\n\n");
+                        else if (player1.Wins.Equals(player2.Wins))
+                            Print($"\nFriendly draw\n\n");
+                        break;
+                    }
                 }
 
                 input = string.Empty;
@@ -190,9 +109,9 @@ namespace GameRockPaperScissors
         internal static void ShowStatistics()
         {
             Print("Statistics\n");
-            Print($"{playerName}: {statistics[1]}\n", ConsoleColor.DarkGreen);
-            Print($"{opponentName}: {statistics[2]}\n", ConsoleColor.DarkRed);
-            Print($"Draw: {statistics[0]}\n", ConsoleColor.Cyan);
+            Print($"{player1.Name}: {player1.Wins}\n", ConsoleColor.DarkGreen);
+            Print($"{player2.Name}: {player2.Wins}\n", ConsoleColor.DarkRed);
+            Print($"Draw: {draw}\n", ConsoleColor.Cyan);
 
             Thread.Sleep(2000);
         }
@@ -202,6 +121,31 @@ namespace GameRockPaperScissors
             Console.ForegroundColor = color;
             Console.Write(text);
             Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public static void PlayerTurn(int playerTurn)
+        {
+            if (playerTurn == 1)
+            {
+                draw++;
+                player2.NextTurn(playerChoice.rock);
+            }
+
+            else if (playerTurn == 2)
+            {
+                player1.PlayerWon();
+                player2.NextTurn(playerChoice.scissors);
+            }
+
+            else if (playerTurn == 3)
+            {
+                player2.PlayerWon();
+                player2.NextTurn(playerChoice.paper);
+            }
+
+            matchesPlayed++;
+            Print($"\n{player1.Name}: {player1.Turn} VS {player2.Name}: {player2.Turn}\n\n");
+            ShowStatistics();
         }
     }
 }
