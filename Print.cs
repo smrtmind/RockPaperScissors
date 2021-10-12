@@ -17,7 +17,7 @@ namespace GameRockPaperScissors
                    @"   / _\_ " + "\n" +
                    @"  | .  .\" + "\n" +
                    @"  /  \ _/" + "\n" +
-                   @" |__|_/  " + "\n";
+                   @"  \_|_/  " + "\n";
         }
 
         public static string Scissors()
@@ -40,11 +40,11 @@ namespace GameRockPaperScissors
 
         public static void RockScissorsPaper()
         {
-            Text(@"    __           " + @"            " + @"______" + "\n");
-            Text(@"   / _\_         " + @"\  /        " + @"|....|" + "\n");
-            Text(@"  | .  .\        " + @" \/         " + @"|....|" + "\n");
-            Text(@"  /  \ _/        " + @" /\         " + @"|....|" + "\n");
-            Text(@" |__|_/          " + @"O  O        " + @"|____|" + "\n");
+            Text(@"    __           " + @"            " + @"______" + "\n" +
+                 @"   / _\_         " + @"\  /        " + @"|....|" + "\n" +
+                 @"  | .  .\        " + @" \/         " + @"|....|" + "\n" +
+                 @"  /  \ _/        " + @" /\         " + @"|....|" + "\n" +
+                 @"  \_|_/          " + @"O  O        " + @"|____|" + "\n", ConsoleColor.DarkYellow);
         }
 
         public static string PrintItem(int choice)

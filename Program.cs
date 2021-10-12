@@ -26,7 +26,7 @@ namespace GameRockPaperScissors
                 else player1 = new Player("Player");
 
                 //using .txt file with library of different names
-                string[] names = File.ReadAllLines(@"D:\GameRockPaperScissors\libraryOfWords.txt");
+                string[] names = File.ReadAllLines(@"D:\GameRockPaperScissors\libraryOfNames.txt");
                 //randomly choose name for opponent
                 player2 = new Player(names[random.Next(0, names.Length - 1)].Trim());
 
