@@ -8,7 +8,6 @@ namespace GameRockPaperScissors
         private static Random random = new Random();
         private static Player player1;
         private static Player player2;
-
         static void Main(string[] args)
         {
             string input = string.Empty;
@@ -45,6 +44,7 @@ namespace GameRockPaperScissors
                     input = Console.ReadLine();
                     Console.ResetColor();
 
+                    //show final statistics and stop the game
                     if (input == "<")
                     {
                         Console.Clear();
@@ -53,10 +53,12 @@ namespace GameRockPaperScissors
                         break;
                     }
 
+                    //continue playing
                     int.TryParse(input, out int choice);
                     if (choice > 0 && choice <= 3)
                     {
                         player1.PlayerChoice((Item)choice);
+                        //generating opponent's answer
                         player2.PlayerChoice((Item)random.Next(1, 4));
                         Arbitrator.Judge(player1, player2);
                     }
